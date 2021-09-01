@@ -1,14 +1,10 @@
 import 'package:events_app/apiModels/EventModel.dart';
 import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
-// import 'package:events_app/providers/eventProvider.dart';
-// import 'package:events_app/providers/societyProvider.dart';
-// import 'package:events_app/providers/userProvider.dart';
 import 'package:events_app/widgets/customtext.dart';
 import 'package:events_app/widgets/eventExplore_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
 
 class ExplorePage extends StatefulWidget {
   final ApiUserSignUpModel user;
@@ -25,8 +21,6 @@ class _ExplorePageState extends State<ExplorePage> {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
-    // final eventprovider = Provider.of<EventProvider>(context);
-    double _height = MediaQuery.of(context).size.height;
     return FutureBuilder(
         future: apicall.getallevents(token: widget.user.token),
         builder:

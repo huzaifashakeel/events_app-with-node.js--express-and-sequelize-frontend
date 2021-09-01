@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:events_app/apiModels/EventModel.dart';
 import 'package:events_app/apiModels/societyModel.dart';
 import 'package:events_app/apiModels/userModel.dart';
@@ -7,18 +6,9 @@ import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
 import 'package:events_app/helpers/screen_nav.dart';
 import 'package:events_app/screens/eventDetails.dart';
-// import 'package:events_app/helpers/screen_nav.dart';
-// import 'package:events_app/models/event.dart';
-// import 'package:events_app/providers/societyProvider.dart';
-// import 'package:events_app/providers/userProvider.dart';
-// import 'package:events_app/screens/eventDetails.dart';
 import 'package:events_app/screens/loading.dart';
 import 'package:events_app/widgets/customtext.dart';
 import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
-// import 'package:transparent_image/transparent_image.dart';
-// import 'package:http/http.dart' as http;
-// import 'dart:convert' as convert;
 
 class EventFeed extends StatefulWidget {
   final bool showhostsoc;
@@ -43,8 +33,6 @@ class _EventFeedState extends State<EventFeed> {
     }
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
-    // final userprovider = Provider.of<UserProvider>(context);
-    // final societyProvider = Provider.of<SocietyProvider>(context);
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -52,7 +40,6 @@ class _EventFeedState extends State<EventFeed> {
         elevation: 2,
         borderRadius: BorderRadius.circular(10),
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Stack(
               children: [
@@ -87,14 +74,13 @@ class _EventFeedState extends State<EventFeed> {
                 ),
                 GestureDetector(
                   onTap: () async {
-                    print(widget.user.isvarified);
                     if (widget.user.isvarified) {
                       ApiUserModel host = await apicall.loadEventhost(
                           hostemail: widget.event.hostEmail,
                           token: widget.user.token);
                       ApiSocietyModel hostsociety = await apicall.getsociety(
                           id: widget.event.societyid, token: widget.user.token);
-                      print(widget.event.eventid);
+
                       List<ApiUserModel> eventfollowers =
                           await apicall.geteventMembers(
                               id: widget.event.eventid,

@@ -1,23 +1,13 @@
 import 'dart:io';
 import 'dart:ui';
-
-// import 'package:dotted_border/dotted_border.dart';
-import 'package:events_app/apiModels/EventModel.dart';
 import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
-import 'package:events_app/firebase%20torage/firebase_storage.dart';
 import 'package:events_app/helpers/screen_nav.dart';
 import 'package:events_app/screens/homePage.dart';
-// import 'package:events_app/firebase%20torage/firebase_storage.dart';
-// import 'package:events_app/helpers/screen_nav.dart';
-// import 'package:events_app/providers/userProvider.dart';
-// import 'package:events_app/screens/homePage.dart';
-// import 'package:events_app/screens/loading.dart';
 import 'package:events_app/widgets/customtext.dart';
 import 'package:events_app/widgets/customtextformfield.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-// import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
   final ApiUserSignUpModel user;

@@ -2,24 +2,16 @@ import 'package:events_app/apiModels/EventModel.dart';
 import 'package:events_app/apiModels/societyModel.dart';
 import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
-// import 'package:events_app/auth/authentication_service.dart';
 import 'package:events_app/helpers/screen_nav.dart';
 import 'package:events_app/main.dart';
-// import 'package:events_app/screens/create_event.dart';
 import 'package:events_app/screens/create_society.dart';
 import 'package:events_app/screens/profilePage.dart';
 import 'package:events_app/screens/viewUserSocieties.dart';
-// import 'package:events_app/providers/eventProvider.dart';
-// import 'package:events_app/providers/userProvider.dart';
-// import 'package:events_app/screens/create_society.dart';
-// import 'package:events_app/screens/profilePage.dart';
 import 'package:events_app/widgets/customtext.dart';
 import 'package:events_app/widgets/eventFeed_widget.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:events_app/widgets/eventFeed_widget.dart';
 import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
 
+// ignore: must_be_immutable
 class HomePage extends StatefulWidget {
   final ApiUserSignUpModel user;
   bool isfeed = false;
@@ -38,7 +30,6 @@ class _HomePageState extends State<HomePage> {
         future: apicall.getallevents(token: widget.user.token),
         builder:
             (BuildContext context, AsyncSnapshot<List<ApiEventModel>> result) {
-          print(result.data);
           return Scaffold(
               appBar: AppBar(
                 actions: [

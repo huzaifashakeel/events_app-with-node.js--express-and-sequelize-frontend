@@ -5,11 +5,6 @@ import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
 import 'package:events_app/helpers/screen_nav.dart';
 import 'package:events_app/screens/homePage.dart';
-// import 'package:events_app/models/event.dart';
-// import 'package:events_app/models/society.dart';
-// import 'package:events_app/models/user.dart';
-// import 'package:events_app/providers/eventProvider.dart';
-// import 'package:events_app/providers/userProvider.dart';
 import 'package:events_app/screens/loading.dart';
 import 'package:events_app/screens/showUserProfile.dart';
 import 'package:events_app/screens/vieweventfollwers.dart';
@@ -18,8 +13,6 @@ import 'package:events_app/widgets/eventSummaryCard.dart';
 import 'package:events_app/widgets/member_infoCard.dart';
 import 'package:events_app/widgets/society_infoCard.dart';
 import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
-// import 'package:transparent_image/transparent_image.dart';
 
 class EventDetails extends StatefulWidget {
   final ApiEventModel event;
@@ -51,13 +44,9 @@ class _EventDetailsState extends State<EventDetails> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    // final userprovider = Provider.of<UserProvider>(context);
-    // final eventprovider = Provider.of<EventProvider>(context);
     bool ifalreadyliked = false;
 
-    //just for testing
     return Scaffold(
-        // backgroundColor: Colors.white,
         body: SafeArea(
             child: SingleChildScrollView(
                 child: FutureBuilder(

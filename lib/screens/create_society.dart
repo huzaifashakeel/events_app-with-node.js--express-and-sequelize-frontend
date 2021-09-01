@@ -2,21 +2,12 @@ import 'dart:io';
 import 'dart:math';
 import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
-// import 'package:events_app/firebase%20torage/firebase_storage.dart';
-// import 'package:events_app/helpers/screen_nav.dart';
-// import 'package:events_app/models/user.dart';
-// import 'package:events_app/providers/societyProvider.dart';
-// import 'package:events_app/screens/homePage.dart';
-// import 'package:events_app/screens/loading.dart';
 import 'package:events_app/widgets/customtext.dart';
 import 'package:events_app/widgets/customtextformfield.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-// import 'package:provider/provider.dart';
 
 class CreateSociety extends StatefulWidget {
-  // final User user;
   final ApiUserSignUpModel userModel;
 
   const CreateSociety({Key? key, required this.userModel}) : super(key: key);
@@ -292,30 +283,6 @@ class _CreateSocietyState extends State<CreateSociety>
                                           content: Text(
                                               "Problem occured while adding society")));
                                 }
-                                //   String profileimageurl = await uploadPic(
-                                //       imagefile: File(_image!.path));
-                                //   print("UPloading Society Data");
-                                //   if (!await societyProvider.createSociety(
-                                //       societyname.text,
-                                //       societydescription.text,
-                                //       societyuniversity.text,
-                                //       goals.text,
-                                //       societytype,
-                                //       department,
-                                //       DateTime.now(),
-                                //       widget.userModel.name,
-                                //       widget.userModel.uid,
-                                //       profileimageurl,
-                                //       "")) {
-                                //     print("error in adding society");
-                                //   } else {
-                                //     clearControllers();
-                                //     // changeScreen(
-                                //     //     context,
-                                //     //     HomePage(
-                                //     //         useremail: widget.userModel.email));
-                                //     // print("Society Added");
-                                //   }
                               }
                             },
                             child: CustomText(

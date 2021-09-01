@@ -1,26 +1,15 @@
 import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
-
 import 'package:dotted_border/dotted_border.dart';
 import 'package:events_app/apiModels/societyModel.dart';
-// import 'package:events_app/apiModels/userModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
-// import 'package:events_app/helpers/screen_nav.dart';
-// import 'package:events_app/firebase%20torage/firebase_storage.dart';
-// import 'package:events_app/helpers/screen_nav.dart';
-// import 'package:events_app/models/event.dart';
-// import 'package:events_app/models/society.dart';
-// import 'package:events_app/models/user.dart';
-// import 'package:events_app/providers/eventProvider.dart';
-// import 'package:events_app/screens/homePage.dart';
 import 'package:events_app/widgets/customtext.dart';
 import 'package:events_app/widgets/customtextformfield.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:image_picker/image_picker.dart';
-// import 'package:provider/provider.dart';
 
 class CreateEvent extends StatefulWidget {
   final ApiSocietyModel eventorganizer;
@@ -52,6 +41,7 @@ class _CreateEventState extends State<CreateEvent> {
   String eventStartingTime = DateTime.now().toString().substring(11, 16);
   String eventendingTime = DateTime.now().toString().substring(11, 16);
   Beckend apiclass = new Beckend();
+  // ignore: avoid_init_to_null
   late XFile? _image = null;
 
   ///late XFile? _image = null;
@@ -445,29 +435,6 @@ class _CreateEventState extends State<CreateEvent> {
                                         content: Text(
                                             "Error while creating Event")));
                               }
-                              //   // if (!await authProvider.CreateEvent()) {
-                              //   String imageurl = await uploadPic(
-                              //       imagefile: File(_image!.path));
-                              //   if (!await authProvider.createEvent(
-                              //       eventname.text,
-                              //       discription.text,
-                              //       eventaddress.text,
-                              //       eventdate,
-                              //       imageurl,
-                              //       widget.eventcreator.name,
-                              //       widget.eventorganizer.name,
-                              //       eventStartingTime,
-                              //       eventendingTime,
-                              //       int.parse(partcipantcontroller.text),
-                              //       isonline,
-                              //       widget.eventorganizer.uid,
-                              //       widget.eventcreator.uid)) {
-                              //     print("Error");
-                              //   } else {
-                              //     print("added");
-                              //     clearControllers();
-                              //     isonline = false;
-                              //   }
                             }
                           },
                           child: CustomText(

@@ -1,20 +1,12 @@
-// import 'package:events_app/helpers/screen_nav.dart';
 import 'package:events_app/apiModels/EventModel.dart';
 import 'package:events_app/apiModels/societyModel.dart';
 import 'package:events_app/apiModels/userModel.dart';
 import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
 import 'package:events_app/helpers/screen_nav.dart';
-// import 'package:events_app/models/society.dart';
-// import 'package:events_app/providers/eventProvider.dart';
-// import 'package:events_app/providers/societyProvider.dart';
-// import 'package:events_app/providers/userProvider.dart';
 import 'package:events_app/screens/society_details.dart';
-// import 'package:events_app/screens/society_details.dart';
 import 'package:events_app/widgets/customtext.dart';
 import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
-// import 'package:transparent_image/transparent_image.dart';
 
 class SocietyInfoCard extends StatelessWidget {
   final ApiUserSignUpModel user;
@@ -31,18 +23,13 @@ class SocietyInfoCard extends StatelessWidget {
 
     bool isadmin;
 
-    // final userprovider = Provider.of<UserProvider>(context);
-    // final societyprovider = Provider.of<SocietyProvider>(context);
-    // final eventProvider = Provider.of<EventProvider>(context);
     return GestureDetector(
       onTap: () async {
-        // await userprovider.loadSocietyMembers(societyid: society.uid);
         if (society.adminEmail == user.email) {
           isadmin = true;
         } else {
           isadmin = false;
         }
-        // await eventProvider.loadSocietyEvents(Socid: society.uid);
         users = await apicall.getsocietyMembers(
             socid: society.id, token: user.token);
         societyevents = await apicall.getsocietyEvents(

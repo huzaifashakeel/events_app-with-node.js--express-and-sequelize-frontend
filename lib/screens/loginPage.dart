@@ -1,18 +1,10 @@
-import 'package:events_app/apiModels/EventModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
-// import 'package:events_app/apicall/becend_functions_call.dart';
-// import 'package:events_app/auth/authentication_service.dart';
 import 'package:events_app/helpers/screen_nav.dart';
-// import 'package:events_app/screens/homePage.dart';
 import 'package:events_app/screens/registerPage.dart';
 import 'package:events_app/widgets/botttomNavBar.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:validators/validators.dart';
-// import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
   @override
@@ -85,22 +77,6 @@ class _LoginPageState extends State<LoginPage> {
                               content: Text('Username or Password Incorrect'),
                             ));
                           }
-                          // if (res == 200) {
-                          //   // changeScreen(
-                          //   //     context,
-                          //   //     BottomNavBar(
-                          //   //       useremail: _email,
-                          //   //     ));
-                          // } else {
-
-                          //}
-
-                          // context
-                          //     .read<AuthenticationService>()
-                          //     .signIn(email: _email, password: _password);
-                          //  \
-
-                          //   User _firebaseUser = context.watch<User>();
                         },
                         child: Text('Login')),
                   ),

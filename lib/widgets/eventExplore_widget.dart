@@ -4,14 +4,9 @@ import 'package:events_app/apiModels/userModel.dart';
 import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
 import 'package:events_app/helpers/screen_nav.dart';
-// import 'package:events_app/models/event.dart';
-// import 'package:events_app/providers/societyProvider.dart';
-// import 'package:events_app/providers/userProvider.dart';
 import 'package:events_app/screens/eventDetails.dart';
 import 'package:events_app/screens/loading.dart';
 import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
-// import 'package:transparent_image/transparent_image.dart';
 
 class EventExploreWidget extends StatelessWidget {
   final ApiEventModel event;

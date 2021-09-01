@@ -1,12 +1,6 @@
 import 'package:events_app/apiModels/userModel.dart';
-// import 'package:events_app/helpers/screen_nav.dart';
-// import 'package:events_app/models/user.dart';
-// import 'package:events_app/providers/societyProvider.dart';
-// import 'package:events_app/screens/showUserProfile.dart';
 import 'package:events_app/widgets/customtext.dart';
 import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
-// import 'package:transparent_image/transparent_image.dart';
 
 class MemberInfo extends StatelessWidget {
   final ApiUserModel user;
@@ -16,7 +10,6 @@ class MemberInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    // final socProvider = Provider.of<SocietyProvider>(context);
     return GestureDetector(
       // onTap: () async {
       //   await socProvider.loadUserSocities(useruid: user.uid);

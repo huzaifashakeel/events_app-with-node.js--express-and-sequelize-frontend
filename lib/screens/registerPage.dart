@@ -1,12 +1,8 @@
-// import 'dart:convert';
-
-// import 'package:events_app/auth/authentication_service.dart';
-// import 'package:events_app/helpers/screen_nav.dart';
-// import 'package:events_app/screens/loginPage.dart';
+import 'package:events_app/helpers/screen_nav.dart';
+import 'package:events_app/screens/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:validators/validators.dart';
-// import 'package:provider/provider.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -15,6 +11,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  // ignore: unused_field
   String _name = '';
   String _userName = '';
   String _email = '';
@@ -110,14 +107,16 @@ class _RegisterPageState extends State<RegisterPage> {
                                 email: _email,
                                 password: _password);
                             if (res == 200) {
-                              print(">>>>>>>>>" + "registred succfully");
+                              _name = '';
+                              _userName = '';
+                              _password = '';
+                              changeScreenReplacement(context, LoginPage());
                             } else {
-                              print(">>>>>>>>>" + "registration problem");
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text(
+                                          'A problem Occured while Registring')));
                             }
-                            // context
-                            //     .read<AuthenticationService>()
-                            //     .signUp(email: _email, password: _password);
-                            //  changeScreenReplacement(context, LoginPage());
                           },
                           child: Text('Register')),
                     ),

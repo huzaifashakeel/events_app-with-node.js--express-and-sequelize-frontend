@@ -1,4 +1,3 @@
-import 'package:events_app/apiModels/EventModel.dart';
 import 'package:events_app/apiModels/userModel.dart';
 import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';

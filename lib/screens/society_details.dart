@@ -4,21 +4,13 @@ import 'package:events_app/apiModels/userModel.dart';
 import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
 import 'package:events_app/helpers/screen_nav.dart';
-// import 'package:events_app/models/society.dart';
-// import 'package:events_app/models/user.dart';
-// import 'package:events_app/providers/eventProvider.dart';
-// import 'package:events_app/providers/societyProvider.dart';
-// import 'package:events_app/providers/userProvider.dart';
 import 'package:events_app/screens/create_event.dart';
 import 'package:events_app/screens/homePage.dart';
 import 'package:events_app/screens/viewsocietyMembers.dart';
 import 'package:events_app/widgets/customtext.dart';
 import 'package:events_app/widgets/eventFeed_widget.dart';
-// import 'package:events_app/widgets/eventFeed_widget.dart';
 import 'package:events_app/widgets/society_info.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-// import 'package:transparent_image/transparent_image.dart';
 
 class SocietyDetails extends StatefulWidget {
   final bool isadmin;
@@ -48,11 +40,8 @@ class _SocietyDetailsState extends State<SocietyDetails> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     Beckend apicall = Beckend();
-    // final userProvider = Provider.of<UserProvider>(context);
-    // final societyProvider = Provider.of<SocietyProvider>(context);
-
-    // final eventProvider = Provider.of<EventProvider>(context);
     bool ifalreadyliked = false;
+    // ignore: unused_local_variable
     int showinsublist;
     int memberscount = apicall.societyfollowers.length;
     if (memberscount > 6)
@@ -113,8 +102,6 @@ class _SocietyDetailsState extends State<SocietyDetails> {
                                       //   //width: 100,
                                       // ),
                                       ),
-
-                              //backgroundImage: AssetImage("images/11.png"),
                               radius: 50,
                             ),
                           ),
@@ -185,14 +172,6 @@ class _SocietyDetailsState extends State<SocietyDetails> {
                           size: 22,
                         ),
                       ),
-                      // Padding(
-                      //   padding: const EdgeInsets.fromLTRB(8, 0, 8, 12),
-                      //   child: CustomText(
-                      //     text: "(${widget.society.type})",
-                      //     fontWeight: FontWeight.w700,
-                      //     size: 18,
-                      //   ),
-                      // ),
                       widget.isadmin
                           ? Padding(
                               padding: const EdgeInsets.all(16.0),
@@ -278,30 +257,6 @@ class _SocietyDetailsState extends State<SocietyDetails> {
                                     )),
                               ),
                             ),
-                      // Padding(
-                      //   padding: const EdgeInsets.all(16.0),
-                      //   child: Container(
-                      //     height: height * 0.07,
-                      //     width: width * 0.9,
-                      //     decoration: BoxDecoration(
-                      //         borderRadius:
-                      //             BorderRadius.all(Radius.circular(15))),
-                      //     child: ElevatedButton(
-                      //         onPressed: () {},
-                      //         child: Row(
-                      //           children: [
-                      //             Padding(
-                      //                 padding: EdgeInsets.only(
-                      //                     left: width * 0.23)),
-                      //             Icon(Icons.group),
-                      //             CustomText(
-                      //                 text: "  Add An Event",
-                      //                 size: 18,
-                      //                 color: Colors.white),
-                      //           ],
-                      //         )),
-                      //   ),
-                      // ),
                       Padding(
                         padding: EdgeInsets.only(
                             left: width * 0.04, bottom: height * 0.02),

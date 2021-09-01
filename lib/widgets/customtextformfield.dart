@@ -1,6 +1,4 @@
-// import 'package:events_app/providers/userProvider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class CustomTextField extends StatefulWidget {

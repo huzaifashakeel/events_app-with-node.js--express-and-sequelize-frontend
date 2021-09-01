@@ -1,5 +1,4 @@
 import 'package:events_app/apiModels/EventModel.dart';
-// import 'package:events_app/models/event.dart';
 import 'package:events_app/widgets/customtext.dart';
 import 'package:flutter/material.dart';
 
