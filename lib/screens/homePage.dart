@@ -2,10 +2,10 @@ import 'package:events_app/apiModels/EventModel.dart';
 import 'package:events_app/apiModels/societyModel.dart';
 import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
-import 'package:events_app/auth/authentication_service.dart';
+// import 'package:events_app/auth/authentication_service.dart';
 import 'package:events_app/helpers/screen_nav.dart';
 import 'package:events_app/main.dart';
-import 'package:events_app/screens/create_event.dart';
+// import 'package:events_app/screens/create_event.dart';
 import 'package:events_app/screens/create_society.dart';
 import 'package:events_app/screens/profilePage.dart';
 import 'package:events_app/screens/viewUserSocieties.dart';
@@ -18,7 +18,7 @@ import 'package:events_app/widgets/eventFeed_widget.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:events_app/widgets/eventFeed_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   final ApiUserSignUpModel user;
