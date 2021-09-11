@@ -1,6 +1,6 @@
 import 'package:events_app/apicall/becend_functions_call.dart';
 import 'package:events_app/helpers/screen_nav.dart';
-import 'package:events_app/screens/registerPage.dart';
+import 'package:events_app/screens/mainPages/registerPage.dart';
 import 'package:events_app/widgets/botttomNavBar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,7 +12,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String _email = '';
+  String _emailOrUsername = '';
   String _password = '';
   Beckend apicall = new Beckend();
 
@@ -48,7 +48,8 @@ class _LoginPageState extends State<LoginPage> {
                           border: OutlineInputBorder()),
                       validator: (value) =>
                           isEmail(value!) ? null : "Please enter a valid email",
-                      onChanged: (value) => setState(() => _email = value)),
+                      onChanged: (value) =>
+                          setState(() => _emailOrUsername = value)),
                   TextFormField(
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.lock_outline_rounded),
@@ -64,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                             ElevatedButton.styleFrom(primary: Colors.black87),
                         onPressed: () async {
                           var res = await apicall.signIn(
-                              email: _email, password: _password);
+                              email: _emailOrUsername, password: _password);
                           if (res.token != '') {
                             changeScreen(
                                 context,

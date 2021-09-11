@@ -1,9 +1,9 @@
 import 'package:events_app/apiModels/userModel.dart';
 import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
-import 'package:events_app/screens/explorePage.dart';
-import 'package:events_app/screens/homePage.dart';
-import 'package:events_app/screens/showUserProfile.dart';
+import 'package:events_app/screens/Details/showUserProfile.dart';
+import 'package:events_app/screens/mainPages/explorePage.dart';
+import 'package:events_app/screens/mainPages/homePage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';

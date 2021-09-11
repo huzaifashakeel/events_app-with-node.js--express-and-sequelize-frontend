@@ -4,11 +4,11 @@ import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
 import 'package:events_app/helpers/screen_nav.dart';
 import 'package:events_app/main.dart';
-import 'package:events_app/screens/create_society.dart';
-import 'package:events_app/screens/profilePage.dart';
-import 'package:events_app/screens/viewUserSocieties.dart';
+import 'package:events_app/screens/Create/create_society.dart';
+import 'package:events_app/screens/ViewCardsPages/viewUserSocieties.dart';
+import 'package:events_app/screens/mainPages/profilePage.dart';
+import 'package:events_app/widgets/Eventrelated/eventFeed_widget.dart';
 import 'package:events_app/widgets/customtext.dart';
-import 'package:events_app/widgets/eventFeed_widget.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable

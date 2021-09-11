@@ -4,8 +4,8 @@ import 'package:events_app/apiModels/userModel.dart';
 import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
 import 'package:events_app/helpers/screen_nav.dart';
-import 'package:events_app/screens/eventDetails.dart';
-import 'package:events_app/screens/loading.dart';
+import 'package:events_app/screens/Details/eventDetails.dart';
+import 'package:events_app/screens/mainPages/loading.dart';
 import 'package:flutter/material.dart';
 
 class EventExploreWidget extends StatelessWidget {

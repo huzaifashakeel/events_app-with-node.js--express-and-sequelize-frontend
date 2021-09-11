@@ -1,8 +1,8 @@
 import 'package:events_app/apiModels/EventModel.dart';
 import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
+import 'package:events_app/widgets/Eventrelated/eventExplore_widget.dart';
 import 'package:events_app/widgets/customtext.dart';
-import 'package:events_app/widgets/eventExplore_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

@@ -95,7 +95,6 @@ class Beckend {
 
       var response = await http.post(url,
           headers: headers, body: jsonString, encoding: encoding);
-      print(response.body);
 
       return response.statusCode;
     } catch (e) {
@@ -597,6 +596,119 @@ class Beckend {
       return res.statusCode;
     } catch (err) {
       return 500;
+    }
+  }
+
+  Future<int> updatevent(
+      {required String eventid,
+      required String name,
+      required String description,
+      required String address,
+      required String eventDate,
+      required String startingTime,
+      required String endingTime,
+      required bool isonline,
+      required int participants,
+      // required String profileimage,
+      required String token}) async {
+    try {
+      var url = Uri.parse('http://10.0.2.2:8000/api/events/');
+      final headers = {
+        "Content-Type": "application/json",
+        'Authorization': token
+      };
+
+      Map<String, dynamic> jsonmap = {
+        'eventid': eventid,
+        'name': name,
+        'description': description,
+        'address': address,
+        'eventDate': eventDate,
+        'startingTime': startingTime,
+        'endingTime': endingTime,
+        'isonline': isonline,
+        'totalParticipants': participants
+        //  'profileimage': profileimage
+      };
+      String jsonString = json.encode(jsonmap);
+      final encoding = Encoding.getByName('utf-8');
+      var response = await http.put(url,
+          headers: headers, body: jsonString, encoding: encoding);
+      print(response.body);
+
+      return response.statusCode;
+    } catch (e) {
+      print(e);
+      return 403;
+    }
+  }
+
+  Future<int> updateUser(
+      {required String name,
+      required String bio,
+      required String email,
+      required String address,
+      required String university,
+      required String department,
+      required String regno,
+      required String phno,
+      required String instaId,
+      // required String profileimage,
+      required String token}) async {
+    try {
+      var url = Uri.parse('http://10.0.2.2:8000/api/user/');
+      final headers = {
+        "Content-Type": "application/json",
+        'Authorization': token
+      };
+      Map<String, dynamic> jsonmap = {
+        'name': name,
+        'userEmail': email,
+        'bio': bio,
+        'address': address,
+        'instaid': instaId,
+        'dateofBirth': '1988-10-12',
+        'phoneNumber': phno,
+        'university': university,
+        'department': department,
+        'registrationNo': regno,
+        //  'profileimage': profileimage
+      };
+      String jsonString = json.encode(jsonmap);
+      final encoding = Encoding.getByName('utf-8');
+      var response = await http.put(url,
+          headers: headers, body: jsonString, encoding: encoding);
+
+      return response.statusCode;
+    } catch (e) {
+      print(e);
+      return 403;
+    }
+  }
+
+  @override
+  Future<int> signup(
+      {required String username,
+      required String email,
+      required String password}) async {
+    try {
+      var url = Uri.parse('http://10.0.2.2:8000/api/signup/');
+      final headers = {'Content-Type': 'application/json'};
+      Map<String, dynamic> jsonmap = {
+        'username': username,
+        'email': email,
+        'password': password
+      };
+      String jsonString = json.encode(jsonmap);
+      final encoding = Encoding.getByName('utf-8');
+
+      var response = await http.post(url,
+          headers: headers, body: jsonString, encoding: encoding);
+
+      return response.statusCode;
+    } catch (e) {
+      print(e);
+      return 403;
     }
   }
 }

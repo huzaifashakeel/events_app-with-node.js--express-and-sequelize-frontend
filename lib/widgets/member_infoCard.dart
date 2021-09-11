@@ -11,14 +11,10 @@ class MemberInfo extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return GestureDetector(
-      // onTap: () async {
-      //   await socProvider.loadUserSocities(useruid: user.uid);
-      //   changeScreen(context, ShowUserProfile(userModel: user));
-      // },
       child: Container(
         height: height * 0.13,
         width: width * 0.9,
-        child: Card(
+        child: Material(
           color: Colors.grey.shade100,
           elevation: 2,
           child: Row(

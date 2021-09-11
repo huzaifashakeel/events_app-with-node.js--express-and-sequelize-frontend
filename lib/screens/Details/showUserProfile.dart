@@ -4,9 +4,11 @@ import 'package:events_app/apiModels/societyModel.dart';
 import 'package:events_app/apiModels/userModel.dart';
 import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
-import 'package:events_app/screens/loading.dart';
+import 'package:events_app/helpers/screen_nav.dart';
+import 'package:events_app/screens/Edit/editUserDetails.dart';
+import 'package:events_app/screens/mainPages/loading.dart';
+import 'package:events_app/widgets/SocietyRelated/society_infoCard.dart';
 import 'package:events_app/widgets/customtext.dart';
-import 'package:events_app/widgets/society_infoCard.dart';
 import 'package:flutter/material.dart';
 
 class ShowUserProfile extends StatefulWidget {
@@ -22,10 +24,12 @@ class ShowUserProfile extends StatefulWidget {
 }
 
 class _ShowUserProfileState extends State<ShowUserProfile> {
-  bool showmore = false;
-
+  bool userhimself = false;
   @override
   Widget build(BuildContext context) {
+    if (widget.userModel!.userEmail == widget.userSignUpModel.email) {
+      userhimself = true;
+    }
     double height = MediaQuery.of(context).size.height;
     Beckend apicall = Beckend();
     return FutureBuilder(
@@ -40,6 +44,41 @@ class _ShowUserProfileState extends State<ShowUserProfile> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    if (userhimself)
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Align(
+                          alignment: Alignment.topRight,
+                          child: DropdownButton<String>(
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400),
+                            icon: Icon(
+                              Icons.more_vert,
+                              color: Colors.black,
+                              size: 40,
+                            ),
+                            elevation: 0,
+                            onChanged: (value) async {
+                              if (value == "Edit Your Profile") {
+                                changeScreen(
+                                    context,
+                                    EditProfile(
+                                        user: widget.userModel,
+                                        userSignUpModel:
+                                            widget.userSignUpModel));
+                              } else {}
+                            },
+                            items: <String>[
+                              "Edit Your Profile",
+                              "Delete My Account"
+                            ].map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                  value: value, child: Text(value));
+                            }).toList(),
+                          ),
+                        ),
+                      ),
                     Padding(padding: EdgeInsets.only(top: height * 0.05)),
                     Center(
                       child: CircleAvatar(

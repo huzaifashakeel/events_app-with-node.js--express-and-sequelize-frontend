@@ -4,7 +4,7 @@ import 'package:events_app/apiModels/userModel.dart';
 import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
 import 'package:events_app/helpers/screen_nav.dart';
-import 'package:events_app/screens/society_details.dart';
+import 'package:events_app/screens/Details/society_details.dart';
 import 'package:events_app/widgets/customtext.dart';
 import 'package:flutter/material.dart';
 
@@ -47,8 +47,8 @@ class SocietyInfoCard extends StatelessWidget {
       },
       child: Container(
         height: height * 0.13,
-        width: width * 0.95,
-        child: Card(
+        width: width * 0.9,
+        child: Material(
           color: Colors.white,
           elevation: 02,
           child: Row(

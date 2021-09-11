@@ -5,8 +5,8 @@ import 'package:events_app/apiModels/userModel.dart';
 import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
 import 'package:events_app/helpers/screen_nav.dart';
-import 'package:events_app/screens/eventDetails.dart';
-import 'package:events_app/screens/loading.dart';
+import 'package:events_app/screens/Details/eventDetails.dart';
+import 'package:events_app/screens/mainPages/loading.dart';
 import 'package:events_app/widgets/customtext.dart';
 import 'package:flutter/material.dart';
 
@@ -28,9 +28,9 @@ class _EventFeedState extends State<EventFeed> {
   bool isadmin = false;
   @override
   Widget build(BuildContext context) {
-    if (widget.event.hostEmail == widget.user.email) {
-      isadmin = true;
-    }
+    print(widget.event.hostEmail);
+    print(widget.user.email);
+
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
 
@@ -75,6 +75,10 @@ class _EventFeedState extends State<EventFeed> {
                 GestureDetector(
                   onTap: () async {
                     if (widget.user.isvarified) {
+                      if (widget.event.hostEmail == widget.user.email) {
+                        print("i am admin");
+                        isadmin = true;
+                      }
                       ApiUserModel host = await apicall.loadEventhost(
                           hostemail: widget.event.hostEmail,
                           token: widget.user.token);

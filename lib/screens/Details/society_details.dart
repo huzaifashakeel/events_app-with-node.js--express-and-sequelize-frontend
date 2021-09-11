@@ -4,12 +4,12 @@ import 'package:events_app/apiModels/userModel.dart';
 import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
 import 'package:events_app/helpers/screen_nav.dart';
-import 'package:events_app/screens/create_event.dart';
-import 'package:events_app/screens/homePage.dart';
-import 'package:events_app/screens/viewsocietyMembers.dart';
+import 'package:events_app/screens/Create/create_event.dart';
+import 'package:events_app/screens/ViewCardsPages/viewsocietyMembers.dart';
+import 'package:events_app/screens/mainPages/homePage.dart';
+import 'package:events_app/widgets/Eventrelated/eventFeed_widget.dart';
+import 'package:events_app/widgets/SocietyRelated/society_info.dart';
 import 'package:events_app/widgets/customtext.dart';
-import 'package:events_app/widgets/eventFeed_widget.dart';
-import 'package:events_app/widgets/society_info.dart';
 import 'package:flutter/material.dart';
 
 class SocietyDetails extends StatefulWidget {
@@ -135,27 +135,22 @@ class _SocietyDetailsState extends State<SocietyDetails> {
                                   ),
                                   elevation: 0,
                                   onChanged: (value) async {
-                                    if (value == "Edit Event Society") {
+                                    int res = await apicall.deleteSociety(
+                                        socid: widget.society.id,
+                                        token: widget.user.token);
+                                    if (res == 200) {
+                                      changeScreenReplacement(
+                                          context, HomePage(user: widget.user));
                                     } else {
-                                      int res = await apicall.deleteSociety(
-                                          socid: widget.society.id,
-                                          token: widget.user.token);
-                                      if (res == 200) {
-                                        changeScreenReplacement(context,
-                                            HomePage(user: widget.user));
-                                      } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(const SnackBar(
-                                                content: Text(
-                                                    'A problem Occured while deleting Society')));
-                                      }
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                              content: Text(
+                                                  'A problem Occured while deleting Society')));
                                     }
                                   },
-                                  items: <String>[
-                                    "Edit Society Details",
-                                    "Delete Society"
-                                  ].map<DropdownMenuItem<String>>(
-                                      (String value) {
+                                  items: <String>["Delete Society"]
+                                      .map<DropdownMenuItem<String>>(
+                                          (String value) {
                                     return DropdownMenuItem<String>(
                                         value: value, child: Text(value));
                                   }).toList(),

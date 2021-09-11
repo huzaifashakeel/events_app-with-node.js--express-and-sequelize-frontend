@@ -3,7 +3,8 @@ import 'dart:ui';
 import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
 import 'package:events_app/helpers/screen_nav.dart';
-import 'package:events_app/screens/homePage.dart';
+import 'package:events_app/screens/mainPages/homePage.dart';
+import 'package:events_app/widgets/botttomNavBar.dart';
 import 'package:events_app/widgets/customtext.dart';
 import 'package:events_app/widgets/customtextformfield.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +42,35 @@ class _ProfilePageState extends State<ProfilePage> {
     userName.text = "";
     userPhNo.text = "";
     userUniversity.text = "";
+  }
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('You Are Varified'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: const <Widget>[
+                Text('We are about to sign you out'),
+                Text('Login Again !!!'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Beckend apicall = new Beckend();
@@ -341,6 +371,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               CustomTextField(
                 editingController: userPhNo,
+                textype: TextInputType.number,
                 text: "Enter Your Phone Number",
               ),
               Padding(
@@ -378,15 +409,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                               if (resstatus == 200) {
                                 clearControllers();
-                                changeScreenReplacement(
-                                    context,
-                                    HomePage(
-                                      user: new ApiUserSignUpModel.fromJson(
-                                          username: widget.user.username,
-                                          email: widget.user.email,
-                                          isvarified: true,
-                                          token: widget.user.token),
-                                    ));
+                                _showMyDialog();
                               } else {
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(const SnackBar(

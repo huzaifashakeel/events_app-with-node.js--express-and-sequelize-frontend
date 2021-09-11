@@ -1,18 +1,16 @@
-import 'package:events_app/apiModels/userModel.dart';
+import 'package:events_app/apiModels/societyModel.dart';
 import 'package:events_app/apiModels/usersignUpModel.dart';
-import 'package:events_app/helpers/screen_nav.dart';
-import 'package:events_app/screens/showUserProfile.dart';
+import 'package:events_app/widgets/SocietyRelated/society_infoCard.dart';
 import 'package:events_app/widgets/customtext.dart';
-import 'package:events_app/widgets/member_infoCard.dart';
 import 'package:flutter/material.dart';
 
-class ViewEventFollowers extends StatelessWidget {
-  final List<ApiUserModel> eventfollowers;
+class ViewMemberSocieties extends StatelessWidget {
+  final List<ApiSocietyModel> memberSocieties;
   final ApiUserSignUpModel user;
-
-  const ViewEventFollowers(
-      {Key? key, required this.eventfollowers, required this.user})
+  const ViewMemberSocieties(
+      {Key? key, required this.memberSocieties, required this.user})
       : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +21,7 @@ class ViewEventFollowers extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: CustomText(
-                text: "Who is Going ?",
+                text: "My Socities",
                 size: 20,
                 fontWeight: FontWeight.bold,
                 letterspacing: 5,
@@ -32,18 +30,12 @@ class ViewEventFollowers extends StatelessWidget {
             Divider(),
             Expanded(
               child: ListView(
-                children: eventfollowers
+                children: memberSocieties
                     .map((e) => GestureDetector(
-                          onTap: () {
-                            changeScreen(
-                                context,
-                                ShowUserProfile(
-                                  userModel: e,
-                                  userSignUpModel: user,
-                                ));
-                          },
-                          child: MemberInfo(
-                            user: e,
+                          onTap: () {},
+                          child: SocietyInfoCard(
+                            society: e,
+                            user: user,
                           ),
                         ))
                     .toList(),

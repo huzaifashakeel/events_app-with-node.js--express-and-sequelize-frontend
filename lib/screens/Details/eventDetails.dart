@@ -4,14 +4,15 @@ import 'package:events_app/apiModels/userModel.dart';
 import 'package:events_app/apiModels/usersignUpModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
 import 'package:events_app/helpers/screen_nav.dart';
-import 'package:events_app/screens/homePage.dart';
-import 'package:events_app/screens/loading.dart';
-import 'package:events_app/screens/showUserProfile.dart';
-import 'package:events_app/screens/vieweventfollwers.dart';
+import 'package:events_app/screens/Details/showUserProfile.dart';
+import 'package:events_app/screens/Edit/editEventDetails.dart';
+import 'package:events_app/screens/ViewCardsPages/vieweventfollwers.dart';
+import 'package:events_app/screens/mainPages/homePage.dart';
+import 'package:events_app/screens/mainPages/loading.dart';
+import 'package:events_app/widgets/Eventrelated/eventSummaryCard.dart';
+import 'package:events_app/widgets/SocietyRelated/society_infoCard.dart';
 import 'package:events_app/widgets/customtext.dart';
-import 'package:events_app/widgets/eventSummaryCard.dart';
 import 'package:events_app/widgets/member_infoCard.dart';
-import 'package:events_app/widgets/society_infoCard.dart';
 import 'package:flutter/material.dart';
 
 class EventDetails extends StatefulWidget {
@@ -106,6 +107,11 @@ class _EventDetailsState extends State<EventDetails> {
                                         elevation: 0,
                                         onChanged: (value) async {
                                           if (value == "Edit Event Details") {
+                                            changeScreen(
+                                                context,
+                                                EditEvent(
+                                                    event: widget.event,
+                                                    token: widget.user.token));
                                           } else {
                                             int res = await apicall.deleteEvent(
                                                 eventid: widget.event.eventid,

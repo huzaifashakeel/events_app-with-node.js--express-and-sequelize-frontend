@@ -1,4 +1,5 @@
 import 'package:events_app/apiModels/EventModel.dart';
+// import 'package:events_app/models/event.dart';
 import 'package:events_app/widgets/customtext.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class EventSummaryCard extends StatelessWidget {
         Container(
           height: height * 0.13,
           width: width * 0.9,
-          child: Card(
+          child: Material(
             // color: Colors.amber,
             elevation: 2,
             child: Row(

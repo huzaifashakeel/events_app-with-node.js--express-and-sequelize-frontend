@@ -8,12 +8,13 @@ class CustomTextField extends StatefulWidget {
   double height;
   int maxLines;
 
-  CustomTextField(
-      {required this.editingController,
-      this.text = "",
-      this.textype = TextInputType.text,
-      this.height = 75,
-      this.maxLines = 1});
+  CustomTextField({
+    required this.editingController,
+    this.text = "",
+    this.textype = TextInputType.text,
+    this.height = 75,
+    this.maxLines = 1,
+  });
 
   @override
   _CustomTextFieldState createState() => _CustomTextFieldState();

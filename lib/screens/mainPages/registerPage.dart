@@ -1,5 +1,5 @@
 import 'package:events_app/helpers/screen_nav.dart';
-import 'package:events_app/screens/loginPage.dart';
+import 'package:events_app/screens/mainPages/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:validators/validators.dart';
@@ -71,6 +71,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 15),
                       child: TextFormField(
+                        keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                             labelText: 'Email',
                             floatingLabelBehavior: FloatingLabelBehavior.auto,

@@ -1,29 +1,24 @@
-import 'dart:io';
-import 'dart:math';
 import 'dart:ui';
-import 'package:dotted_border/dotted_border.dart';
-import 'package:events_app/apiModels/societyModel.dart';
+import 'package:events_app/apiModels/EventModel.dart';
 import 'package:events_app/apicall/becend_functions_call.dart';
 import 'package:events_app/widgets/customtext.dart';
 import 'package:events_app/widgets/customtextformfield.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-import 'package:image_picker/image_picker.dart';
 
-class CreateEvent extends StatefulWidget {
-  final ApiSocietyModel eventorganizer;
+class EditEvent extends StatefulWidget {
+  final ApiEventModel event;
   final String token;
 
-  const CreateEvent(
-      {Key? key, required this.eventorganizer, required this.token})
+  const EditEvent({Key? key, required this.event, required this.token})
       : super(key: key);
 
   @override
   _CreateEventState createState() => _CreateEventState();
 }
 
-class _CreateEventState extends State<CreateEvent> {
+class _CreateEventState extends State<EditEvent> {
   final formkey = GlobalKey<FormState>();
   TextEditingController eventname = TextEditingController();
   TextEditingController eventaddress = TextEditingController();
@@ -38,30 +33,7 @@ class _CreateEventState extends State<CreateEvent> {
   String hostid = "";
   int intrestcount = 0;
   bool isonline = false;
-  String eventStartingTime = DateTime.now().toString().substring(11, 16);
-  String eventendingTime = DateTime.now().toString().substring(11, 16);
   Beckend apiclass = new Beckend();
-  // ignore: avoid_init_to_null
-  late XFile? _image = null;
-
-  ///late XFile? _image = null;
-  late ImagePicker imagePicker = ImagePicker();
-  getImage(bool isCamera) async {
-    XFile? image;
-    try {
-      if (isCamera) {
-        image = await imagePicker.pickImage(source: ImageSource.camera);
-      } else {
-        image = await imagePicker.pickImage(source: ImageSource.gallery);
-        setState(() {
-          _image = image;
-          print(_image);
-        });
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
 
   String choosendate = "";
   void clearControllers() {
@@ -71,7 +43,8 @@ class _CreateEventState extends State<CreateEvent> {
 
   @override
   Widget build(BuildContext context) {
-    // final authProvider = Provider.of<EventProvider>(context);
+    String eventStartingTime = widget.event.statrtingTime;
+    String eventendingTime = widget.event.endingTime;
 
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -84,55 +57,16 @@ class _CreateEventState extends State<CreateEvent> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Container(
-                  height: height * 0.3,
-                  width: width,
-                  color: Colors.grey,
-                  child: ClipRRect(
-                      // borderRadius: BorderRadius.only(
-                      //     bottomLeft: Radius.circular(20),
-                      //     bottomRight: Radius.circular(20)),
-                      child: Stack(children: [
-                    if (_image != null)
-                      Image.file(
-                        File(_image!.path),
-                        fit: BoxFit.fill,
-                        width: width,
-                        height: height,
-                      ),
-                    IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: Icon(Icons.arrow_back)),
-                    if (_image == null)
-                      ClipRect(
-                          child: GestureDetector(
-                              onTap: () {
-                                getImage(false);
-                              },
-                              child: Center(
-                                child: BackdropFilter(
-                                    filter: ImageFilter.blur(
-                                        sigmaX: 0.0, sigmaY: 0.0),
-                                    child: DottedBorder(
-                                      dashPattern: [6, 6],
-                                      borderType: BorderType.RRect,
-                                      //radius: Radius.circular(10),
-                                      strokeWidth: 2,
-                                      color: Colors.black,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: CustomText(
-                                          text: "Select a relevent photo",
-                                          color: Colors.black,
-                                          size: 16,
-                                        ),
-                                      ),
-                                    )),
-                              )))
-                  ])),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: CustomText(
+                    text: "Edit Event Details",
+                    size: 20,
+                    fontWeight: FontWeight.bold,
+                    letterspacing: 5,
+                  ),
                 ),
+                Divider(),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
                   child: Row(
@@ -146,7 +80,7 @@ class _CreateEventState extends State<CreateEvent> {
                   ),
                 ),
                 CustomTextField(
-                  text: "Enter Event Name",
+                  text: widget.event.name,
                   editingController: eventname,
                 ),
                 Row(
@@ -162,7 +96,7 @@ class _CreateEventState extends State<CreateEvent> {
                   ],
                 ),
                 CustomTextField(
-                  text: 'choose how many people can join event',
+                  text: widget.event.totalparticipants.toString(),
                   editingController: partcipantcontroller,
                 ),
                 Row(
@@ -217,7 +151,7 @@ class _CreateEventState extends State<CreateEvent> {
                           enabled: false,
                           //controller: authProvider.password,
                           decoration: InputDecoration(
-                              hintText: eventdate.toString().substring(0, 10),
+                              labelText: widget.event.eventDate,
                               border: InputBorder.none,
                               icon: Icon(Icons.calendar_today)),
                         ),
@@ -288,7 +222,7 @@ class _CreateEventState extends State<CreateEvent> {
                               enabled: false,
                               //controller: authProvider.password,
                               decoration: InputDecoration(
-                                  hintText: eventStartingTime,
+                                  labelText: eventStartingTime,
                                   border: InputBorder.none,
                                   icon: Icon(Icons.watch)),
                             ),
@@ -325,7 +259,6 @@ class _CreateEventState extends State<CreateEvent> {
                               DatePicker.showTimePicker(context,
                                   showTitleActions: true, onConfirm: (time) {
                                 setState(() {
-                                  print(time);
                                   eventendingTime =
                                       time.toString().substring(11, 16);
                                 });
@@ -335,7 +268,7 @@ class _CreateEventState extends State<CreateEvent> {
                               enabled: false,
                               //controller: authProvider.password,
                               decoration: InputDecoration(
-                                  hintText: eventendingTime,
+                                  labelText: eventendingTime,
                                   border: InputBorder.none,
                                   icon: Icon(Icons.watch)),
                             ),
@@ -358,7 +291,7 @@ class _CreateEventState extends State<CreateEvent> {
                       Padding(padding: EdgeInsets.only(left: width * 0.63)),
                       CupertinoSwitch(
                           activeColor: Colors.blue,
-                          value: isonline,
+                          value: widget.event.isonline,
                           onChanged: (bool value) {
                             setState(() {
                               isonline = value;
@@ -379,7 +312,7 @@ class _CreateEventState extends State<CreateEvent> {
                   ],
                 ),
                 CustomTextField(
-                    text: "Enter Event Address",
+                    text: widget.event.address,
                     editingController: eventaddress),
                 Row(
                   children: [
@@ -392,7 +325,7 @@ class _CreateEventState extends State<CreateEvent> {
                   ],
                 ),
                 CustomTextField(
-                    text: "Enter Event Description",
+                    text: widget.event.description,
                     editingController: discription),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 15, 0, 20),
@@ -402,17 +335,11 @@ class _CreateEventState extends State<CreateEvent> {
                       child: ElevatedButton(
                           onPressed: () async {
                             if (formkey.currentState!.validate()) {
-                              Random rand = new Random();
-                              int evntid = rand.nextInt(9999999);
-                              int res = await apiclass.createvent(
+                              int res = await apiclass.updatevent(
+                                  eventid: widget.event.eventid,
                                   name: eventname.text,
                                   description: discription.text,
-                                  eventid: evntid.toString(),
                                   address: eventaddress.text,
-                                  adminname: widget.eventorganizer.adminName,
-                                  hostsocietyname: widget.eventorganizer.name,
-                                  hostemail: widget.eventorganizer.adminEmail,
-                                  hostsocietyid: widget.eventorganizer.id,
                                   eventDate: eventdate,
                                   startingTime: eventStartingTime,
                                   endingTime: eventendingTime,
@@ -420,15 +347,11 @@ class _CreateEventState extends State<CreateEvent> {
                                   participants:
                                       int.parse(partcipantcontroller.text),
                                   token: widget.token);
+
                               if (res == 200) {
-                                int added = await apiclass.addsocietyEvent(
-                                    eventid: evntid.toString(),
-                                    socid: widget.eventorganizer.id,
-                                    token: widget.token);
-                                if (added == 200) {
-                                  clearControllers();
-                                  Navigator.pop(context);
-                                }
+                                clearControllers();
+                                Navigator.pop(context);
+                                Navigator.pop(context);
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
@@ -438,7 +361,7 @@ class _CreateEventState extends State<CreateEvent> {
                             }
                           },
                           child: CustomText(
-                            text: "Create",
+                            text: "Update",
                             fontWeight: FontWeight.bold,
                             size: 24,
                             color: Colors.white,
